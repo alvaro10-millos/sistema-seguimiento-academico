@@ -1,0 +1,50 @@
+HTTP
+### Prueba 1: Nota 2.5 SIN retroalimentación (Debe Bloquear con Error 400)
+POST http://localhost:3000/api/v1/evaluaciones
+Content-Type: application/json
+
+{
+  "id_estudiante": 1,
+  "asignatura": "Matemáticas",
+  "nota": 2.5,
+  "retroalimentacion_evidencia": ""
+}
+
+###
+
+### Prueba 2: Nota 2.5 CON retroalimentación (Debe Aprobar con Semáforo Rojo)
+POST http://localhost:3000/api/v1/evaluaciones
+Content-Type: application/json
+
+{
+  "id_estudiante": 1,
+  "asignatura": "Matemáticas",
+  "nota": 2.5,
+  "retroalimentacion_evidencia": "El estudiante no entregó el desarrollo del taller en la fecha estipulada."
+}
+###
+### PRUEBA 3: Consultar todas las evaluaciones registradas (GET)
+GET http://localhost:3000/api/v1/evaluaciones
+###
+### PRUEBA 4: Consultar evaluación por ID (GET)
+GET http://localhost:3000/api/v1/evaluaciones/1
+
+###
+### PRUEBA 5: Intentar consultar un ID inexistente
+GET http://localhost:3000/api/v1/evaluaciones/999
+
+###
+### PRUEBA 6: Eliminar evaluación por ID (DELETE)
+DELETE http://localhost:3000/api/v1/evaluaciones/1
+
+###
+### PRUEBA 7: Actualizar evaluación por ID (PUT)
+PUT http://localhost:3000/api/v1/evaluaciones/2
+Content-Type: application/json
+
+{
+  "id_estudiante": 1,
+  "asignatura": "Matemáticas",
+  "nota": 4.2,
+  "retroalimentacion_evidencia": "El estudiante realizó la recuperación del taller satisfactoriamente."
+}
